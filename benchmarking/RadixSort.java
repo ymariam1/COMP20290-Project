@@ -1,6 +1,6 @@
 public class RadixSort {
 
-    public static void sort(Integer[] arr) {
+    public static void sort(int[] arr) {
         int n = arr.length;
         int m = max(arr);
 
@@ -11,8 +11,8 @@ public class RadixSort {
     }
 
     // counting sort based on the digit at position exp (1, 10, 100, ...)
-    static void countSort(Integer[] arr, int n, int exp) {
-        Integer[] output = new Integer[n];
+    static void countSort(int[] arr, int n, int exp) {
+        int[] output = new int[n];
         int[] count = new int[10];
 
         // count occurrences of each digit
@@ -35,7 +35,7 @@ public class RadixSort {
         System.arraycopy(output, 0, arr, 0, n);
     }
 
-    static int max(Integer[] arr) {
+    static int max(int[] arr) {
         int max = arr[0];
         for (int i = 1; i < arr.length; i++) {
             if (arr[i] > max) {

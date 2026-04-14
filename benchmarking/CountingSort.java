@@ -4,7 +4,7 @@
 
 public class CountingSort {
 
-    public static void sort(Integer[] arr) {
+    public static void sort(int[] arr) {
         int n = arr.length;
         int max = max(arr);
 
@@ -20,7 +20,7 @@ public class CountingSort {
         }
 
         // build output array walking backwards to keep it stable
-        Integer[] out = new Integer[n];
+        int[] out = new int[n];
         for (int i = n - 1; i >= 0; i--) {
             int v = arr[i];
             out[count[v] - 1] = v;
@@ -30,7 +30,7 @@ public class CountingSort {
         System.arraycopy(out, 0, arr, 0, n);
     }
 
-    static int max(Integer[] arr) {
+    static int max(int[] arr) {
         int max = arr[0];
         for (int i = 1; i < arr.length; i++) {
             if (arr[i] > max) {

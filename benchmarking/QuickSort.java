@@ -1,10 +1,10 @@
 public class QuickSort {
 
-    public static void sort(Integer[] arr) {
+    public static void sort(int[] arr) {
         quickSort(arr, 0, arr.length - 1);
     }
 
-    static void quickSort(Integer[] arr, int low, int high) {
+    static void quickSort(int[] arr, int low, int high) {
         if (low < high) {
             int par = partition(arr, low, high);
             quickSort(arr, low, par - 1);
@@ -13,7 +13,7 @@ public class QuickSort {
     }
 
     // partitions around arr[high] as pivot, returns final pivot index
-    static int partition(Integer[] arr, int low, int high) {
+    static int partition(int[] arr, int low, int high) {
         int pivot = arr[high];
         int i = low - 1;
 
@@ -27,7 +27,7 @@ public class QuickSort {
         return i + 1;
     }
 
-    static void swap(Integer[] arr, int i, int j) {
+    static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
