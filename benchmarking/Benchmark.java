@@ -9,7 +9,7 @@ public class Benchmark {
 
     // Paper's experimental setup: fix n, vary k (max element value)
     static final int[] N_VALUES = {1_000, 10_000, 100_000, 1_000_000};
-    static final int[] K_VALUES = {999, 9_999, 99_999, 999_999, 9_999_999, 99_999_999, 999_999_999};
+    static final int[] K_VALUES = {999, 9_999, 99_999, 999_999, 9_999_999, 99_999_999};//, 999_999_999};
 
     static final int RUNS = 5;
     static final long SEED = 42;
@@ -30,7 +30,7 @@ public class Benchmark {
                 run("QuickSort",    n, k, base, QuickSort::sort,    csv);
                 run("CountingSort", n, k, base, CountingSort::sort, csv);
                 run("RadixSort",    n, k, base, RadixSort::sort,    csv);
-                // run("ARUCountingSort", n, k, base, ARUCountingSort::sort, csv);
+                run("ARUCountingSort", n, k, base, ARUCountingSort::sort, csv);
             }
         }
 
