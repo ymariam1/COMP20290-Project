@@ -37,7 +37,37 @@ for n in n_values:
     ax.grid(True, axis="y", alpha=0.3)
 
     plt.tight_layout()
-    plt.savefig(f"results_n{n}.png", dpi=150)
+    plt.savefig(f"barcharts/results_n{n}.png", dpi=150)
     print(f"Saved results_n{n}.png")
+
+    # Line chart excluding CountingSort (like paper Figure 4)
+    # so the scaling differences between other algorithms are visible
+    line_algos = [a for a in algorithms if a != "CountingSort"]
+    fig2, ax2 = plt.subplots(figsize=(10, 6))
+
+    for algo in line_algos:
+        algo_data = subset[subset["algorithm"] == algo].sort_values("k")
+        if algo_data.empty:
+            continue
+
+        ax2.plot(
+            range(len(algo_data)),
+            algo_data["time_ms"].to_numpy(),
+            marker="o",
+            linewidth=2,
+            label=algo,
+        )
+
+    ax2.set_xlabel("Value of maximum element (k)")
+    ax2.set_ylabel("Time elapsed (msec)")
+    ax2.set_title(f"Time Complexity Comparison for N={n}")
+    ax2.set_xticks(range(len(k_values)))
+    ax2.set_xticklabels([str(k) for k in k_values], rotation=45, ha="right")
+    ax2.grid(True, alpha=0.3)
+    ax2.legend()
+
+    plt.tight_layout()
+    plt.savefig(f"linecharts/results_line_n{n}.png", dpi=150)
+    print(f"Saved results_line_n{n}.png")
 
 plt.show()
